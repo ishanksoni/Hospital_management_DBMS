@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <style>
+    h1 { text-align: centre;}
+    h2 { text-align: centre;}
+    </style>
+<head>
+
+    <div>
+    {% for message in messages %}
+        {{message}}
+
+    {% endfor %}
+    </div>
+
+    <h1>
+        HOME PAGE 
+    </h1>
+    <h2>
+        <a href="/profile">{{request.user.first_name}} {{request.user.last_name}}</a>
+
+        <a class="waves-effect waves-grey" href="/profile">profile</a>
+        <button>logout</button>
+        <a class="waves-effect waves-grey" href="/logout">logout</a>
+    </h2>
+
+</head>
+
+<body>
+    <ul>
+        {% for k,v in menu.items %}
+
+            <li><a class="waves-effect waves-grey" href="{{v}}">{{k}}</a></li>
+
+        {% endfor %}
+
+    </ul>
+
+</body>
+
+
+
+</html>
