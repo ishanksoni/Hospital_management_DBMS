@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+		<style>
+		.regiter-form {
+			width: 500px;
+			margin:  auto;
+			font-family: Tahoma, sans-serif;
+		}
+		.regiter-form h1 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.regiter-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.regiter-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #bfd6ec;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+        .regiter-form select{
+            padding: 10px 10px;
+            box-sizing: border-box;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        .msg h1{
+            text-align: center;
+			color: whitesmoke;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+        }
+		</style>
+	<body style="background-color: #2F4F4F;">
+
+        {% if messages %}
+            {% for message in messages %}
+            <div = class = "container center-align" >
+                <div class = "msg">
+                {{message}}
+                </div>            
+            </div>
+            {% endfor %}    
+        {% endif %}
+
+    <div class="container center-align">
+		<div class="regiter-form">
+			<h1 style="color:black; background-color:#bfd6ec ;"  >Register Patient</h1>
+            <form id="register" method="POST" action="/register/">
+                {% csrf_token %}
+				<input type="text" name="first_name" placeholder="first_name" required>
+				<input type="text" name="last_name" placeholder="last_name" required>
+                <select id="type" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+				<input style="font-size: medium; color: black;" type="submit" value="submit">
+			</form>
+        </div>
+
+        </div>>
+       
+	</body>
+</html>
+    
