@@ -1,87 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-    </head>
-		<style>
+		<meta charset="utf-8">
+		<title>Login|Hospital</title>
+	</head>
+	<style>
+		body {
+		background: rgba(108,142,169,1);
+
+		background:linear-gradient( to right,rgba(70,115,225,0.9529331752232143) 0%, rgb(28, 95, 104)0%, rgb(138, 173, 200) 80%);
+		}
+		.msg {
+		margin-left: 10px;
+		display:inline-block;
+		padding:10px 100px;
+		background-color: rgb(4, 28, 56);
+		font-size:17px;
+		border:none;
+		border-radius:5px;
+		color:#c2edfd;
+		cursor:pointer;
+
+
+		}
+
 		.login-form {
-			width: 300px;
-			margin: 0 auto;
-			font-family: Tahoma, sans-serif;
+		font-family: "Roboto", sans-serif;
+		width:650px;
+		margin:30px auto;
+		background:linear-gradient(to right, #a5ccff 0%, #f3f5fbc5 10%, #ffffff 99%);
+		border-radius: 10px;
 		}
-		.login-form h1 {
-			text-align: center;
-			color: #4d4d4d;
-			font-size: 24px;
-			padding: 20px 0 20px 0;
+
+		.form-header  {
+		background-color: rgba(66, 122, 148, 0.383);
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		border-bottom: 3px solid #1abeb1;
 		}
-		.login-form input[type="password"],
-		.login-form input[type="text"] {
-			width: 100%;
-			padding: 15px;
-			border: 1px solid #dddddd;
-			margin-bottom: 15px;
-			box-sizing:border-box;
+
+		.form-header h1 {
+		font-size: 30px;
+		text-align:center;
+		color:rgb(4, 28, 56);
+		padding:20px 0;
+		border-bottom:1px solid #076666;
 		}
-		.login-form input[type="submit"] {
-			width: 100%;
-			padding: 15px;
-			background-color: #535b63;
-			border: 0;
-			box-sizing: border-box;
-			cursor: pointer;
-			font-weight: bold;
-			color: #ffffff;
+		.form-body {
+		padding:10px 40px;
+		color:rgb(68, 62, 62);
 		}
-        .login-form select{
-            padding: 10px 10px;
-            box-sizing: border-box;
-            cursor: pointer;
-            margin-bottom: 5px;
-        }
-        .msg h1{
-            text-align: center;
-			color: #4d4d4d;
-			font-size: 24px;
-			padding: 20px 0 20px 0;
-        }
-		</style>
+
+		.form-group{
+		margin-bottom:20px;
+		}
+
+		.form-body .label-title {
+		color:rgb(4, 28, 56);;
+		font-size: 17px;
+		font-weight: bold;
+		}
+
+		.form-body .form-input[type="password"],
+				.form-body .form-input[type="text"] {
+					width: 100%;
+					padding: 15px;
+					border: 1.5px solid #6da1e4;
+					margin-bottom: 15px;
+					box-sizing:border-box;
+				}
+
+		::-webkit-input-placeholder  {
+		color:#031a31;
+		}
+
+		.login-form .form-footer  {
+		background-color: rgba(255, 255, 255, 0.595);;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		padding:10px 40px;
+		text-align: right;
+		border-top: 3px solid #1abeb1;
+		clear:both;
+		}
+
+		.btn {
+		display:inline-block;
+		padding:10px 20px;
+		background-color: rgb(4, 28, 56);
+		font-size:17px;
+		border:none;
+		border-radius:5px;
+		color:#c2edfd;
+		cursor:pointer;
+		}
+		.btn:hover {
+		background-color: rgba(196, 234, 251, 0.876);;
+		color:rgb(4, 28, 56);
+		}
+	</style>
 	<body>
-
-        {% if messages %}
-            {% for message in messages %}
-            <div = class = "container center-align" >
-                <div class = "msg">
-                
-                {{message}}
-
-                </div>
-
+		{% if messages %}
+			{% for message in messages %} 
+				<div class = "msg">
+					{{message}}
+				</div>
             
-            </div>
             {% endfor %}
         {% endif %}
+		<form class="login-form" action="/login/" method="POST">
+			{% csrf_token %}
 
-    <div class="container center-align">
-		<div class="login-form">
-			<h1>Login Form</h1>
-            <form id="login" method="POST" action="/login/">
-                {% csrf_token %}
-				<input type="text" name="username" placeholder="username" required>
-				<input type="password" name="password" placeholder="password" required>
-                <select id="type" name="type">
-                    <option value="employee">Employee</option>
-                    <option value="doctor">Doctor</option>
-                    <option value="patient">Patient</option>
-                  </select>
-				<input type="submit" value="submit">
-			</form>
-        </div>
+			<!-- form header -->
+			<div class="form-header">
+				<h1>Login</h1>
+			</div>
 
-        </div>>
-       
+			<!-- form body -->
+			<div class="form-body">	
+				<input type="text" name="username" id="username" class="form-input" placeholder="Username" required="required">
+				<input type="password" name="password" id="password" class="form-input" placeholder="enter your password" required="required">
+			</div>
+
+			<div class="form-footer">
+				<button type="submit" class="btn">Register</button>
+			</div>
+
+		</form>
+
+
 	</body>
 </html>
-    

@@ -1,82 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-    </head>
-		<style>
-		.regiter-form {
-			width: 500px;
-			margin:  auto;
-			font-family: Tahoma, sans-serif;
-		}
-		.regiter-form h1 {
-			text-align: center;
-			color: #4d4d4d;
-			font-size: 24px;
-			padding: 20px 0 20px 0;
-		}
-		.regiter-form input[type="text"] {
-			width: 100%;
-			padding: 15px;
-			border: 1px solid #dddddd;
-			margin-bottom: 15px;
-			box-sizing:border-box;
-		}
-		.regiter-form input[type="submit"] {
-			width: 100%;
-			padding: 15px;
-			background-color: #bfd6ec;
-			border: 0;
-			box-sizing: border-box;
-			cursor: pointer;
-			font-weight: bold;
-			color: #ffffff;
-		}
-        .regiter-form select{
-            padding: 10px 10px;
-            box-sizing: border-box;
-            cursor: pointer;
-            margin-bottom: 5px;
-        }
-        .msg h1{
-            text-align: center;
-			color: whitesmoke;
-			font-size: 24px;
-			padding: 20px 0 20px 0;
-        }
-		</style>
-	<body style="background-color: #2F4F4F;">
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <title>Register Patient</title>
 
-        {% if messages %}
-            {% for message in messages %}
-            <div = class = "container center-align" >
-                <div class = "msg">
-                {{message}}
-                </div>            
-            </div>
-            {% endfor %}    
+  </head>
+  <style>
+
+
+    body {
+      background: rgba(108,142,169,1);
+      background: linear-gradient(to right, rgba(70,115,225,0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
+    }
+
+    .msg {
+		margin-left: 10px;
+		display:inline-block;
+		padding:10px 100px;
+		background-color: rgb(4, 28, 56);
+		font-size:17px;
+		border:none;
+		border-radius:5px;
+		color:#c2edfd;
+		cursor:pointer;
+
+
+		}
+
+    .signup-form {
+      font-family: "Roboto", sans-serif;
+      width:650px;
+      margin:30px auto;
+      background:linear-gradient(to right, #a5ccff 0%, #f3f5fbc5 0%, #ffffff 99%);
+      border-radius: 10px;
+    }
+
+    .form-header  {
+      background-color: rgba(66, 122, 148, 0.383);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom: 3px solid #1abeb1;
+    }
+
+    .form-header h1 {
+      font-size: 30px;
+      text-align:center;
+      color:rgb(4, 28, 56);
+      padding:20px 0;
+      border-bottom:1px solid #076666;
+    }
+    .form-body {
+      padding:10px 40px;
+      color:rgb(68, 62, 62);
+    }
+
+    .form-group{
+      margin-bottom:20px;
+    }
+
+   
+
+    .form-body .form-input[type="password"],
+      .form-body .form-input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        border: 1.5px solid #dddddd;
+        margin-bottom: 15px;
+        box-sizing:border-box;
+    }
+    .horizontal-group .left{
+      float:left;
+      width:50%;
+    }
+    .horizontal-group .right{
+      float:right;
+      width:50%;
+    }
+
+    ::-webkit-input-placeholder  {
+      color:rgb(4, 28, 56);
+      
+    }
+
+    .signup-form .form-footer  {
+    background-color:rgba(66, 122, 148, 0.383);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding:10px 40px;
+    text-align: right;
+    border-top: 3px solid #1abeb1;
+   
+    }
+
+    .form-footer span {
+    float:left;
+    margin-top: 10px;
+    color:rgb(0, 0, 0);  
+    font-style: italic;
+    font-weight: thin;
+    }
+
+    .btn {
+    display:inline-block;
+    padding:10px 20px;
+    background-color: rgb(4, 28, 56);
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    color:#c2edfd;
+    cursor:pointer;
+    }
+
+    .btn:hover {
+    background-color: rgba(196, 234, 251, 0.876);;
+    color:rgb(4, 28, 56);
+    }
+
+  </style>
+  <body>
+    {% if messages %}
+			{% for message in messages %} 
+				<div class = "msg">
+					{{message}}
+				</div>
+            
+            {% endfor %}
         {% endif %}
+    <form class="signup-form" action="/register/" method="POST">
+      {% csrf_token %}
 
-    <div class="container center-align">
-		<div class="regiter-form">
-			<h1 style="color:black; background-color:#bfd6ec ;"  >Register Patient</h1>
-            <form id="register" method="POST" action="/register/">
-                {% csrf_token %}
-				<input type="text" name="first_name" placeholder="first_name" required>
-				<input type="text" name="last_name" placeholder="last_name" required>
-                <select id="type" name="gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="other">Other</option>
-                  </select>
-				<input style="font-size: medium; color: black;" type="submit" value="submit">
-			</form>
+      
+
+      <div class="form-header">
+        <h1>Register Account</h1>
+      </div>
+
+      <div class="form-body">
+
+        <div class="horizontal-group">
+          <div class="form-group left">
+            <input type="text" name="firstname" id="firstname" class="form-input" placeholder="* First Name" required="required" />
+          </div>
+          <div class="form-group right">
+            <input type="text" name="lastname" id="lastname" class="form-input" placeholder="* Last name" />
+          </div>
         </div>
 
-        </div>>
-       
-	</body>
+        <div class="form-group">
+          <input type="text" name="email" id="email" class="form-input" placeholder="* Email" required="required">
+        </div>
+
+        <div class="horizontal-group">
+          <div class="form-group left">
+          
+            <input type="text" name="contact" id="contact" class="form-input" placeholder="*Phone N0." required="required">
+          </div>
+          <div class="form-group left">
+            
+            <input type="text" name="username" id="username" class="form-input" placeholder="* Username" required="required">
+          </div>
+        </div>
+
+      
+
+        <!-- Passwrod and confirm password -->
+        <div class="horizontal-group">
+          <div class="form-group left">
+           
+            <input type="password" name="password" id="password" class="form-input" placeholder="enter your password" required="required">
+          </div>
+          <div class="form-group right">
+            <input type="password" class="form-input" name="confirm-password" id="confirm-password" placeholder="enter your password again" required="required">
+          </div>
+        </div>
+
+        
+        <div class="horizontal-group">
+          <div class="form-group left">
+          
+          <div class="input-group">
+            <label for="male" style="color:rgb(4, 28, 56);"><input type="radio" name="gender" value="male" id="male"> Male</label>
+            <label for="female" style="color:rgb(4, 28, 56);"><input type="radio" name="gender" value="female" id="female"> Female</label>
+          </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="dob" style="color:rgb(4, 28, 56);">DOB</label>
+          <input type="date" name="dob" id="dob">
+        </div>
+
+        <!--blood group-->
+        <br>
+        <div class="form-group">
+          <label for="bldg" class="label-title" style="color:rgb(4, 28, 56);">Blood Group </label>
+          <input type="text" name="bldg" id="bldg"  placeholder="A+,B+,A-,O+...">
+        </div>  
+        <br>
+
+        <div class="form-group ">  
+          <input type="text" name="address" id="address" class="form-input" placeholder="enter your address" required="required">
+        </div>
+
+      </div>
+
+
+      <div class="form-footer">
+        <span>* required</span>
+        <button type="submit" class="btn">Register</button>
+      </div>
+    </form>
+  </body>
 </html>
-    

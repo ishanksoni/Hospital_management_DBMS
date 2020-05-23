@@ -7,10 +7,7 @@ from . import context_processor
 
 @login_required(login_url = '/login/')
 
-
-
-def home(request):
-    
+def home(request):    
     menu = context_processor.menu_processor(request)
 
     messages.add_message(request, messages.INFO, 'Welcome to The Hospital Portal.')

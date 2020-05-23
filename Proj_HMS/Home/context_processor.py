@@ -22,7 +22,7 @@ def menu_processor(request):
         menu['Bills'] = '/bill'
 
     elif hasGroup(user, 'Receptionist'):
-        menu['New Patient'] = '/profile/register'
+        menu['New Patient'] = '/register'
         menu['Manage Appointments'] = '/appointments'
         menu['New Appointment'] = '/appointments/book'
         menu['Bills'] = '/bill'
