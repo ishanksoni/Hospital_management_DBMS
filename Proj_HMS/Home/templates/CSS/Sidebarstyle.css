@@ -1,0 +1,43 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+#sidebar{
+    position: fixed;
+    width: 18%;
+    height: 100%;
+    left:0px;
+    background: #151719;
+}
+#sidebar ul li{
+    color: rgba(230,230,230,0.9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100,100,100,0.3);
+}
+#sidebar ul li a{
+    text-decoration: none;
+    color: rgba(230,230,230,0.9);
+}
+#sidebar .toggle-btn{
+    position: absolute;
+    left:110%;
+    top:20px;
+    transition :all 5ms linear;
+}
+#sidebar.active{
+    left:-220px;
+}
+#sidebar .toggle-btn span{
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: #151719;
+    margin: 5px 0px;
+}
+.container{
+    position: absolute;
+    left:440px;
+    top: 50px;
+}
