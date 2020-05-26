@@ -1,14 +1,149 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
-    <head>
-        Profile
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<style>
+    body {
+        font-family: sans-serif;
+        background: rgba(108, 142, 169, 1);
+        background: linear-gradient(to right, rgba(70, 115, 225, 0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
+    }
 
-    <body>
-        {% for k,v in menu.items %}
-            {{k}} :: {{v}}
-            <br>
-        {% endfor %}
-    </body>
+    .general-form {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 35px;
+        font-family: Tahoma, sans-serif;
+        border: 1px solid black;
+        padding: 35px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: all 500ms linear;
+    }
+
+    .general-form:hover {
+        transform: scale(1.04);
+    }
+
+    .general-form h1 {
+        text-align: center;
+        color: #3d2d2d;
+    }
+
+    .general-form form div input[type="date"],
+    .general-form form div input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #dddddd;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+
+    .grid-cont {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .row {
+        margin: 3px;
+        padding: 3px;
+        margin-bottom: auto;
+    }
+
+    .info {
+        margin: 3px;
+        padding: 3px;
+        margin-top: auto;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="form-group general-form">
+            <h1>Profile</h1>
+            <form action="POST" action="/profile/">
+                <div class=grid-cont>
+                    <div class="row">
+                        <label for="firstname">
+                            <h4>First Name</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="firstname" value="" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="lastname">
+                            <h4>Last Name</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="lastname" value="" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="email">
+                            <h4>Email</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="email" value="" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="doj">
+                            <h4>Date of Joining</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="doj" value="" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="contactno">
+                            <h4> Contact no</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="contactno" value="" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="specification">
+                            <h4>Specification</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="specification" value="" readonly>
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="roomno">
+                            <h4>Room No</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="roomno" value="" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>
