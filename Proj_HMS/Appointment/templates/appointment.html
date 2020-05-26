@@ -1,0 +1,10 @@
+<html>
+    <h1>
+        Appointment Form
+    </h1>
+    <form action ="/appointments/book/" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit">
+    </form>
+</html>

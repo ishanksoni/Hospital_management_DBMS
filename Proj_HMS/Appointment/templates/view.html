@@ -1,0 +1,14 @@
+<html>
+    <h1>
+        LIST OF ALL APPOINTMENTS
+    </h1>
+    {% for apoint in list_appointments %}
+        {% for  items in apoint %}
+           <div style="background-color: aqua;"> {{items}} </div>
+        {% endfor %}
+        <br>
+    {% endfor %}
+
+<br>
+    {{now_t}}
+</html>

@@ -41,3 +41,16 @@
     left:440px;
     top: 50px;
 }
+.msg {
+    margin-left: 10px;
+    display:inline-block;
+    padding:10px 100px;
+    background-color: rgb(4, 28, 56);
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    color:#c2edfd;
+    cursor:pointer;
+
+
+    }

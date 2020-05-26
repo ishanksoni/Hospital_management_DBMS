@@ -14,21 +14,24 @@ def menu_processor(request):
         menu['Appointments'] = '/appointments'
         menu['Reports'] = '/reports'
         menu['Generate Report'] = '/reports/generate'
+        menu['Logout']  = '/logout'
         
     elif hasGroup(user, 'Patients'):
         menu['Reports'] = '/reports'
         menu['Appointments'] = '/appointments'
         menu['Medication'] = '/bill/medicines'
         menu['Bills'] = '/bill'
+        menu['Logout']  = '/logout'
 
     elif hasGroup(user, 'Receptionist'):
         menu['New Patient'] = '/register'
         menu['Manage Appointments'] = '/appointments'
         menu['New Appointment'] = '/appointments/book'
         menu['Bills'] = '/bill'
+        menu['Logout']  = '/logout'
     
     elif hasGroup(user, 'inventory_manager'):
         menu['All Stock'] = ''
         menu['Stock Details'] = ''
 
-    return {'menu': menu}
+    return menu

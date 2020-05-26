@@ -7,11 +7,11 @@ from django.template.context_processors import csrf
 from django.contrib import messages
 from Profile.models import User_detail
 from django.contrib.auth.decorators import login_required
-
+from Appointment.views import *
 
 def check_grp(user):
     try:
-        group = Group.objects.get(name='Receptionist')
+        group = Group.objects.get(name="Receptionist")
         return True if group in user.groups.all() else False
     except:
         return False
@@ -39,9 +39,10 @@ def register(request):
                 messages.add_message(request, messages.WARNING ,"password didnot matched")
                 return HttpResponseRedirect('/register/')
 
-            
             new_user = User.objects.create_user(username=un,email=email,password=p1,first_name = fn , last_name = ln)
-            new_user.save()  
+            new_user.save()
+
+
             details = User_detail(user = new_user , gender = gen , blood_group = bldg ,contact_no = int(cn) , address = adres, dob= dob)
             details.save()
             group = Group.objects.get(name= 'Patients')
@@ -51,10 +52,12 @@ def register(request):
                 # return HttpResponseRedirect('/register/')
             messages.add_message(request, messages.WARNING , 'Successfully Registered' + un)
             return HttpResponse("successfully registered")
-        else:
+        else:   
             return render(request,'register.html')
     else:
-        return HttpResponse("Hold right there Sparky!!!\n Access denied")
+        messages.add_message(request, messages.WARNING ,"Hold right there !!Accses Denied")
+        return HttpResponseRedirect('/')
+
             
     
 

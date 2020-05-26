@@ -6,15 +6,9 @@
     </head>
 
     <body>
-        <h3>
-            Name 
-        </h3>
-        {{request.user.first_name}}  {{request.user.last_name}}
-        <h3>
-            Email id   
-            
-        </h3>
-        {{request.user.email}}
-
+        {% for k,v in menu.items %}
+            {{k}} :: {{v}}
+            <br>
+        {% endfor %}
     </body>
 </html>
