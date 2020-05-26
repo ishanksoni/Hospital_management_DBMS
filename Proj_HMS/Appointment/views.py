@@ -41,6 +41,9 @@ def book_appointment(request):
                     # doctor = Doctor_details.objects().get(user = user)
                     appointment = Appointments(patient = patient ,doctor = dn ,time= time,date= date,comment=comment)
                     appointment.save()
+                    patient.doctor=dn
+                    patient.save()
+                    print(patient.doctor)
                     messages.add_message(request, messages.WARNING ,"Successfully added appointment")
                     return HttpResponseRedirect('/')
                 else:
@@ -68,7 +71,8 @@ def view_appointments(request):
         
     all_appointment = Appointments.objects.filter(doctor=doctor)
     now_t = datetime.datetime.now()
-
+    up_list = []
+    past_list =[]
     list_appointments = []
     for appoint in all_appointment:
         temp_list = []
@@ -76,9 +80,21 @@ def view_appointments(request):
         temp_list.append(str(appoint.date))
         temp_list.append(str(appoint.time))
         temp_list.append(str(appoint.comment))
+        if(appoint.date < now_t.date()):
+            past_list.append(temp_list)
+        elif(appoint.date==now_t.date()):
+            if(appoint.time<now_t.time()):
+                past_list.append(temp_list)
+            else:
+                up_list.append(temp_list)
 
+        else:
+            up_list.append(temp_list)
         list_appointments.append(temp_list)
 
+    # print(up_list ," up  coming list is -----1-1-1-")
+    # print(past_list)
 
-    return render(request,'view.html',{'list_appointments':list_appointments , 'now_t':now_t})  
+
+    return render(request,'view.html',{'up':up_list , 'pre': past_list , 'now_t':now_t})  
   

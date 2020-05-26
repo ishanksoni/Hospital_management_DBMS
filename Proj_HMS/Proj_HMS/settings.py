@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Profile',
     'register',
     'Appointment',
+    'Bills',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS =HttpResponse("successfully registered") [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -127,7 +128,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = TrueHttpResponse("successfully registered")
 
 
 # Static files (CSS, JavaScript, Images)

@@ -22,8 +22,8 @@
 }
 #sidebar .toggle-btn{
     position: absolute;
-    left:110%;
-    top:20px;
+    left:102%;
+    top:5px;
     transition :all 5ms linear;
 }
 #sidebar.active{
@@ -54,3 +54,35 @@
 
 
     }
+
+    /* The alert message box */
+.alert {
+    padding: 10px;
+    display: inline-block;
+    padding-left: 5%;
+    background-color: #32b95f; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    cursor: pointer;
+    
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  } 
+
+
+  

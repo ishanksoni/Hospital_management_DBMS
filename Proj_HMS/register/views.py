@@ -51,7 +51,7 @@ def register(request):
                 # messages.add_message(request, messages.WARNING ,"Error occured in database")
                 # return HttpResponseRedirect('/register/')
             messages.add_message(request, messages.WARNING , 'Successfully Registered' + un)
-            return HttpResponse("successfully registered")
+            return HttpResponseRedirect(request,'appontments/book')
         else:   
             return render(request,'register.html')
     else:

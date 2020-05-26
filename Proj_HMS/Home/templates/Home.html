@@ -1,28 +1,32 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Home</title>
     <link rel="stylesheet" href="{% static 'CSS/Sidebarstyle.css' %}">
 </head>
 <body>  
-    <div class="container">
+    
         {% if messages %}
-			{% for message in messages %} 
-				<div class = "msg">
-					{{message}}
-				</div>
-            
-            {% endfor %}
-        {% endif %}
+                {% for message in messages %} 
+                <div class="alert" onclick="myFunction()">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    {{message}}
+                  </div>
+                {% endfor %}
+            {% endif %}
+            <br>
+    
+    <br>
+    <div class="container">
+
         <h1>Hospital Management System</h1>
+        <br>
+        
     </div>
     <div id="sidebar">
-        ￼ ￼
-        *{
+
         <div class="toggle-btn" onclick="togglesidebar()">
             <span></span>
             <span></span>
@@ -30,6 +34,7 @@
         </div>
         <div>
             <ul>
+                <li><a  href="/profile/{{request.user}}/">Profile</a></li>
                 {% for k,v in menu.items %}
                     <li><a  href="{{v}}">{{k}}</a></li>
                 {% endfor %}            
@@ -42,6 +47,11 @@
             document.getElementById("sidebar").classList.toggle('active');
         }
     </script>
+    <script>
+        function myFunction() {
+          document.getElementById("field2").value = document.getElementById("field1").value;
+        }
+    </script>
     
-</body>
+    </body>
 </html>

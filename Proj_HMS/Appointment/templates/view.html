@@ -2,13 +2,33 @@
     <h1>
         LIST OF ALL APPOINTMENTS
     </h1>
-    {% for apoint in list_appointments %}
-        {% for  items in apoint %}
-           <div style="background-color: aqua;"> {{items}} </div>
-        {% endfor %}
+
+    <div style="background: rgb(133, 209, 223); color: rgb(24, 35, 59); width: auto;">
+        {{now_t}}
+    </div>
+    <h3 style="position: relative; text-align: center; background-size: auto; background-color: rgb(177, 170, 226);"> Upcoming Appointments</h3>
+        {% for apoint in up %}
+            {% for  items in apoint %}
+                <div style="background-color: rgb(139, 236, 236);"> {{items}} </div>
+            {% endfor %}
         <br>
-    {% endfor %}
+        {% endfor %}
+
+
+    <br>
+    <br>
+    <br>
+    <h3 style="position: relative; text-align: center; background-size: auto; background-color: rgb(177, 170, 226);"> Previous Appointments</h3>
+    {% for apoint in pre %}
+            {% for  items in apoint %}
+                <div style="background-color: rgb(216, 141, 114);"> {{items}} </div>
+            {% endfor %}
+        <br>
+        {% endfor %}
+
+
+    
 
 <br>
-    {{now_t}}
+    
 </html>
