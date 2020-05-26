@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="{% static 'CSS/Sidebarstyle.css' %}">
 </head>
 <body>  
+    <div class="nowtime">
+        Time now is <span id="time"></span>
+    </div>
     <div class="container">
+        <div id='alert'></div>
         {% if messages %}
 			{% for message in messages %} 
 				<div class = "msg">
@@ -31,7 +35,7 @@
         <div>
             <ul>
                 {% for k,v in menu.items %}
-                    <li><a  href="{{v}}">{{k}}</a></li>
+                    <li onclick="location.href = '{{v}}';">{{k}}</li>
                 {% endfor %}            
             </ul>       
         </div>
@@ -41,6 +45,27 @@
         function togglesidebar(){
             document.getElementById("sidebar").classList.toggle('active');
         }
+
+        function displayTime(){
+        let today = new Date();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+       // console.log(time);
+        document.getElementById('time').innerHTML = time;
+        }
+        setInterval(displayTime,  1000);
+        
+
+
+        function accessdenied(){
+            document.getElementById('alert').innerHTML='<p style="font-size:40px">Access Denied!!!</p>'; 
+            setTimeout(function() {
+                document.getElementById('alert').innerHTML='';
+                },3000);
+        }
+        //accessdenied();
+        // Whenever we need to pop up a access denied message on screen we will call this function
+       
+
     </script>
     
 </body>
