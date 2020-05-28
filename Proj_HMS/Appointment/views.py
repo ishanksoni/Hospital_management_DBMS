@@ -10,7 +10,11 @@ from Profile.models import *
 from django.contrib.auth.decorators import login_required
 from .forms import AppointmentForm
 from . models import Appointments
+from Bills.models import Bills
 import datetime
+
+
+now_t = datetime.datetime.now()
 
 
 def check_grp(user):
@@ -26,13 +30,14 @@ def book_appointment(request):
     if check_grp(request.user) == True:
         if(request.method=='POST'):
             form = AppointmentForm(request.POST)
-            
+
+            print("paased")
             if form.is_valid():
                 form.cleaned_data
                 un      = form.cleaned_data['user_name']
                 dn      = form.cleaned_data['doctor_name']
-                date    = form.cleaned_data['date']
-                time    = form.cleaned_data['time']
+                date    = request.POST.get('date')
+                time    =  request.POST.get('time')
                 comment = form.cleaned_data['Comment']
                 if(User.objects.filter(username = un).exists()):
                     user = User.objects.get(username = un)
@@ -41,6 +46,8 @@ def book_appointment(request):
                     # doctor = Doctor_details.objects().get(user = user)
                     appointment = Appointments(patient = patient ,doctor = dn ,time= time,date= date,comment=comment)
                     appointment.save()
+                    new_bill = Bills( patient = patient , amount = 150 ,date = now_t.date() ,time = now_t.time(), detail = "Appointment Charges to")
+                    new_bill.save()
                     patient.doctor=dn
                     patient.save()
                     print(patient.doctor)
@@ -70,16 +77,15 @@ def view_appointments(request):
         return HttpResponseRedirect('/')
         
     all_appointment = Appointments.objects.filter(doctor=doctor)
-    now_t = datetime.datetime.now()
     up_list = []
     past_list =[]
     list_appointments = []
     for appoint in all_appointment:
-        temp_list = []
-        temp_list.append(str(appoint.patient))
-        temp_list.append(str(appoint.date))
-        temp_list.append(str(appoint.time))
-        temp_list.append(str(appoint.comment))
+        temp_list = {}
+        temp_list['patient'] = str(appoint.patient)
+        temp_list['date'] = str(appoint.date)
+        temp_list['time'] = str(appoint.time)
+        temp_list['comment'] = str(appoint.comment)
         if(appoint.date < now_t.date()):
             past_list.append(temp_list)
         elif(appoint.date==now_t.date()):

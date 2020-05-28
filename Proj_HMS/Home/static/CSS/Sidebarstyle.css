@@ -2,14 +2,14 @@ body{
     font-family: sans-serif;
     padding: 0px;
     background: rgba(108,142,169,1);
-    background: linear-gradient(to right, rgba(70,115,225,0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
+    background: linear-gradient(to right, rgba(74, 120, 235, 0.953) 0%, rgb(95, 200, 216) 0%, rgb(114, 146, 172) 80%);
 }
 #sidebar{
     position: fixed;
     width: 18%;
     height: 100%;
     left:0px;
-    background: #151719;
+    background: rgb(4, 28, 56);
 }
 #sidebar ul{
     display: block;
@@ -29,17 +29,14 @@ body{
 }
 #sidebar .toggle-btn{
     position: absolute;
-    left:102%;
-    top:5px;
+    left:110%;
+    top:20px;
     transition :all 5ms linear;
 }
 #sidebar.active{
     left:-280px;
 }
-.container .alert{
-    position: relative;
-    font-size: 30px;
-}
+
 div button{
     margin: 5px;
     margin-left: 10px;
@@ -77,51 +74,11 @@ div button:hover{
     top: 50px;
 }
 .msg {
-    margin-left: 10px;
     display:inline-block;
     padding:10px 100px;
     background-color: rgb(4, 28, 56);
     font-size:17px;
     border:none;
-    border-radius:5px;
     color:#c2edfd;
     cursor:pointer;
-<<<<<<< HEAD
-
-
-    }
-
-    /* The alert message box */
-.alert {
-    padding: 10px;
-    display: inline-block;
-    padding-left: 5%;
-    background-color: #32b95f; /* Red */
-    color: white;
-    margin-bottom: 15px;
-    cursor: pointer;
-    
-  }
-  
-  /* The close button */
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  /* When moving the mouse over the close button */
-  .closebtn:hover {
-    color: black;
-  } 
-
-
-  
-=======
 }
->>>>>>> 1f42fef089e85bac3ffbf6a224db2aebdca9b6ee

@@ -1,34 +1,181 @@
-<html>
-    <h1>
-        LIST OF ALL APPOINTMENTS
-    </h1>
 
-    <div style="background: rgb(133, 209, 223); color: rgb(24, 35, 59); width: auto;">
-        {{now_t}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Appointments</title>
+</head>
+<style>
+    body {
+        font-family: sans-serif;
+        background: rgba(108, 142, 169, 1);
+        background: linear-gradient(to right, rgba(70, 115, 225, 0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
+    }
+
+    .container {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .responsive-table li {
+        border-radius: 3px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .table-header {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background:linear-gradient(to right, #7f9ec7 0%, #b0f1eec5 0%, #ffffff 99%);
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        flex-basis: 25%;
+    }
+
+    .col-2 {
+        flex-basis: 25%;
+    }
+
+    .col-3 {
+        flex-basis: 25%;
+    }
+
+    .col-4 {
+        flex-basis: 25%;
+    }
+
+    .container1 h1 {
+        text-align: center;
+    }
+
+    .container1 .name {
+        margin-left: 350px;
+        margin-bottom: 20px;
+    }
+
+    .container button {
+        position: relative;
+        background: rgb(4, 28, 56);
+        border: 1px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        align-items: center;
+    }
+
+    .container button:hover {
+        transform: scale(1.04);
+    }
+
+    .btn {
+        margin: 5px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgb(102, 205, 236);
+        transition: all 300ms linear;
+    }
+
+    .btn:hover {
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="container1">
+        <h1>
+            Appointments
+        </h1>
+        <div class="name">
+            <span style="font-size: 20px; margin: 10px;padding: 5px;">Doctor Name</span>
+            <input type="text" id="firstname" value= "Dr {{request.user.first_name}} " readonly>
+        </div>
     </div>
-    <h3 style="position: relative; text-align: center; background-size: auto; background-color: rgb(177, 170, 226);"> Upcoming Appointments</h3>
-        {% for apoint in up %}
-            {% for  items in apoint %}
-                <div style="background-color: rgb(139, 236, 236);"> {{items}} </div>
+
+    <div class="container">
+        <button id="btn-Upcoming" class="btn" onclick="Upcoming()">Upcoming List</button>
+        <button id="btn-Previous" class="btn" onclick="Previous()">Previous List</button>
+        <ul id="Upcoming" class="responsive-table">
+            <div id="heading">
+                <p style="font-size:30px">Upcoming Appointments</p>
+            </div>
+            <li class="table-header">
+                <div class="col col-1">Patient username</div>
+                <div class="col col-2">Date</div>
+                <div class="col col-3">Time</div>
+                <div class="col col-4">Comment</div>
+            </li>
+
+            {% for appointment in up %}
+                <li class="table-row">
+                    <div class="col col-1" data-label="Patient username"> {{appointment.patient}}</div>
+                    <div class="col col-2" data-label="Date">{{appointment.date}}</div>
+                    <div class="col col-3" data-label="Time">{{appointment.time}}</div>
+                    <div class="col col-4" data-label="Comment">{{appointment.comment}}</div>
+                </li>
+
             {% endfor %}
-        <br>
+        </ul>
+
+        <ul id="Previous" class="responsive-table" style="display: none;">
+            <div id="pheading">
+            </div>
+            <li class="table-header">
+                <div class="col col-1">Patient username</div>
+                <div class="col col-2">Date</div>
+                <div class="col col-3">Time</div>
+                <div class="col col-4">Comment</div>
+            </li>
+            
+            {% for appointment in pre %}
+            <li class="table-row">
+                <div class="col col-1" data-label="Patient username"> {{appointment.patient}}</div>
+                <div class="col col-2" data-label="Date">{{appointment.date}}</div>
+                <div class="col col-3" data-label="Time">{{appointment.time}}</div>
+                <div class="col col-4" data-label="Comment">{{appointment.comment}}</div>
+            </li>
+
         {% endfor %}
+        </ul>
 
 
-    <br>
-    <br>
-    <br>
-    <h3 style="position: relative; text-align: center; background-size: auto; background-color: rgb(177, 170, 226);"> Previous Appointments</h3>
-    {% for apoint in pre %}
-            {% for  items in apoint %}
-                <div style="background-color: rgb(216, 141, 114);"> {{items}} </div>
-            {% endfor %}
-        <br>
-        {% endfor %}
-
-
-    
-
-<br>
-    
+    </div>
+    <script>
+        function Upcoming() {
+            document.getElementById("btn-Upcoming").style.color = "rgba(108, 142, 169, 1)";
+            document.getElementById("btn-Previous").style.color = "rgb(102, 205, 236)";
+            document.getElementById('Upcoming').style.display = '';
+            document.getElementById('Previous').style.display = 'none';
+        };
+        function Previous() {
+            document.getElementById("btn-Previous").style.color = "rgba(108, 142, 169, 1)";
+            document.getElementById("btn-Upcoming").style.color = "rgb(102, 205, 236)   ";
+            document.getElementById('pheading').innerHTML = '<p style="font-size:30px">Previous Appointments</p>';
+            document.getElementById('Upcoming').style.display = 'none';
+            document.getElementById('Previous').style.display = '';
+        };
+    </script>
+</body>
 </html>

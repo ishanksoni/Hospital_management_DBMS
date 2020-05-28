@@ -1,40 +1,23 @@
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>HMS|HOME PAGE</title>
     <link rel="stylesheet" href="{% static 'CSS/Sidebarstyle.css' %}">
 </head>
 <body>  
-<<<<<<< HEAD
     
-=======
     <div class="nowtime">
         Time now is <span id="time"></span>
     </div>
-    <div class="container">
-        <div id='alert'></div>
->>>>>>> 1f42fef089e85bac3ffbf6a224db2aebdca9b6ee
-        {% if messages %}
-                {% for message in messages %} 
-                <div class="alert" onclick="myFunction()">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    {{message}}
-                  </div>
-                {% endfor %}
-            {% endif %}
-            <br>
-    
-    <br>
-    <div class="container">
 
+    <div class="container">
         <h1>Hospital Management System</h1>
-        <br>
-        
     </div>
     <div id="sidebar">
-
         <div class="toggle-btn" onclick="togglesidebar()">
             <span></span>
             <span></span>
@@ -42,14 +25,15 @@
         </div>
         <div>
             <ul>
-                <li><a  href="/profile/{{request.user}}/">Profile</a></li>
+                <li onclick="location.href = '/profile/{{request.user}}';">Profile</li>
                 {% for k,v in menu.items %}
                     <li onclick="location.href = '{{v}}';">{{k}}</li>
                 {% endfor %}            
             </ul>       
         </div>
     </div>
-        
+
+
     <script>
         function togglesidebar(){
             document.getElementById("sidebar").classList.toggle('active');
@@ -62,25 +46,26 @@
         document.getElementById('time').innerHTML = time;
         }
         setInterval(displayTime,  1000);
-        
-
-
-        function accessdenied(){
-            document.getElementById('alert').innerHTML='<p style="font-size:40px">Access Denied!!!</p>'; 
+        function accessdenied(mesg){
+            document.getElementById('alert').innerHTML='<p style="font-size:20px">mesg</p>'; 
             setTimeout(function() {
                 document.getElementById('alert').innerHTML='';
                 },3000);
         }
-        //accessdenied();
-        // Whenever we need to pop up a access denied message on screen we will call this function
-       
-
     </script>
-    <script>
-        function myFunction() {
-          document.getElementById("field2").value = document.getElementById("field1").value;
-        }
-    </script>
-    
-    </body>
+</body>
+<footer>
+    <div id='alert' style="margin-left: 500px;">
+        {% if messages %}
+            {% for message in messages %} 
+                <script>
+                    document.getElementById('alert').innerHTML='<p class =" msg">{{message}}</p>'; 
+                    setTimeout(function() {
+                        document.getElementById('alert').innerHTML='';
+                        },3000);
+                </script>     
+            {% endfor %}
+        {% endif %}
+    </div>
+</footer>
 </html>

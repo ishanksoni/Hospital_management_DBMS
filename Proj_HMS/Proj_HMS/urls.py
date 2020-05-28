@@ -11,5 +11,6 @@ urlpatterns = [
     path('logout/',logout),
     path('profile/',include('Profile.urls')),  
     path('appointments/',include('Appointment.urls')),
+    path('bills/',include('Bills.urls')),
 ]
 

@@ -15,7 +15,7 @@ def profile(request,username):
     menu['First Name'] = user.first_name
     menu['Last Name'] = user.last_name
     menu['Email'] = user.email
-    menu['Date_Joined'] = user.date_joined
+    menu['Date_Joined'] = user.date_joined.date
     try:
         patient = User_detail.objects.get(user=user)
         fields = patient.__dict__

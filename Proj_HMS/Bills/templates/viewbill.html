@@ -1,0 +1,16 @@
+<html>
+    <title> BIlls </title>
+    <h1>
+        Bills
+    </h1>
+
+    <p> Search by user name </p>
+    <form action="/bills/" method="POST">
+        {% csrf_token %}
+        <input type = "text" name = "username" id = "username" placeholder="*username" />
+    </form>
+    <body>
+
+    </body>
+
+</html>

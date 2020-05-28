@@ -1,10 +1,166 @@
-<html>
-    <h1>
-        Appointment Form
-    </h1>
-    <form action ="/appointments/book/" method="POST">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit">
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment-Form</title>
+</head>
+<style>
+    body {
+        font-family: sans-serif;
+        background: rgba(108, 142, 169, 1);
+        background: linear-gradient(to right, rgba(70, 115, 225, 0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
+    }
+
+    .general-form {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 35px;
+        background:linear-gradient(to right, #7f9ec7 0%, #b0f1eec5 0%, #ffffff 99%);
+        font-family: Tahoma, sans-serif;
+        border: 1px solid rgb(28, 28, 71);
+        border-radius: 10px;
+        padding: 35px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: all 500ms linear;
+    }
+    .general-form:hover {
+        transform: scale(1.04);
+    }
+
+
+    .general-form h1 {
+        text-align: center;
+        color: rgb(28, 28, 71);
+    }
+    .general-form form div input[type="time"],
+    .general-form form div input[type="date"],
+    .general-form form div input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #c1cffffd;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+   
+    .grid-cont {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .row {
+        margin: 3px;
+        padding: 3px;
+        margin-bottom: auto;
+    }
+
+    .info {
+        margin: 3px;
+        padding: 3px;
+        margin-top: auto;
+    }
+    #submit {
+        position: relative;
+        background: rgb(28, 28, 71);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #submit:hover {
+        transform: scale(1.04);
+        background-color: rgb(153, 253, 253);
+    }
+
+    .btn {
+        margin: 5px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgb(153, 230, 232);
+        transition: all 300ms linear;
+    }
+
+    .btn:hover {
+        color: rgb(29, 22, 88);
+        
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="form-group general-form">
+            <h1>Appointment-Form</h1>
+            <form action ="/appointments/book/" method="POST">
+                {% csrf_token %}
+                <div class=grid-cont>
+                    <div class="row">
+                        <label for="Name">
+                            <h4>Name</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        {{form.user_name}}
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="doctorname">
+                            <h4>Doctor Name</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        {{form.doctor_name}}   
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="date">
+                            <h4>Date</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="date" name = "date" id="date" placeholder="date">
+                        <!-- {{form.date}} -->
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="time">
+                            <h4>Time</h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <input type="time" name = "time" id="time" step="10" placeholder="time">
+                        <!-- {{form.time}} -->
+                    </div>
+                </div>
+
+                <div class="grid-cont">
+                    <div class="row">
+                        <label for="comment">
+                            <h4> Comment </h4>
+                        </label>
+                    </div>
+                    <div class="info">
+                        <br>
+                        {{form.Comment}}
+                    </div>
+                </div>
+                <div>
+                    <button id="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
 </html>
+
+
+
+
+
+
