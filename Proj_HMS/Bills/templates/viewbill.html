@@ -1,16 +1,27 @@
-<html>
-    <title> BIlls </title>
-    <h1>
+{% extends 'index.html' %}
+
+
+
+{% block con %}
+    <title> Bills </title>
+    <h1 style="text-align: center; color:rgb(16, 16, 56);">
         Bills
     </h1>
+    <p style="text-align: center; size: 30px;"> Search by user name </p>
+    <section id="contactus">
+        <form action="/bills/" method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <div class="form-group"></div>
+            <input type = "text" name = "username" id = "username" placeholder="*username" />
+        </div>
+            </form>
+    </section>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    </p>
+    
+ {% endblock con  %}
 
-    <p> Search by user name </p>
-    <form action="/bills/" method="POST">
-        {% csrf_token %}
-        <input type = "text" name = "username" id = "username" placeholder="*username" />
-    </form>
-    <body>
-
-    </body>
-
-</html>

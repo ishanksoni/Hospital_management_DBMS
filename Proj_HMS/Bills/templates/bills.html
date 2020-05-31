@@ -97,6 +97,23 @@
             text-align: right;
             border: 1px solid silver;
         }
+
+    .btn {
+    display:inline-block;
+    padding:10px 20px;
+    background-color: rgb(4, 28, 56);
+    font-size:17px;
+    border:none;
+    border-radius:5px;
+    color:#c2edfd;
+    cursor:pointer;
+    margin-left: 690px;
+    }
+
+    .btn:hover {
+    background-color: rgba(196, 234, 251, 0.876);;
+    color:rgb(4, 28, 56);
+    }
     </style>
 </head>
 <body>
@@ -151,7 +168,15 @@
                             </td>
                             <td>{{bill.date}}  {{bill.time}}</td>
                             <td>{{bill.amount}}</td>
-                            <td>{{bill.status}}</td>
+
+                            {% if bill.status == True%}
+                                <td> Paid</td>
+
+                            {% else %}
+                                <td> Unpaid</td>
+
+                            {% endif %}
+
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -174,5 +199,17 @@
             </table>
         </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+
+    {% if flag == 1 %}
+        <form method="POST" action="/bills/{{user}}/">
+            {% csrf_token %}
+            <button type="submit" class="btn">Pay Bills</button>
+        </form>
+
+    {% endif %}
 </body>
-</html>
+</html> 

@@ -1,0 +1,245 @@
+/* CSS RESET */
+
+body{
+    margin:0px;
+    padding:0px;
+    background: rgba(108, 142, 169, 1);
+    background: linear-gradient(to right, rgba(125, 246, 250, 0.953) 0%, rgb(89, 183, 197) 0%, rgb(84, 133, 161) 80%);
+}
+html{
+    scroll-behavior: smooth;
+}
+
+nav{
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    min-height: 70px;
+    max-height:70px ;
+    background:linear-gradient(to right, rgba(24, 21, 155, 0.953) 0%, rgb(34, 83, 197) 0%, rgb(25, 120, 172) 50%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    z-index: 500;
+}
+.alert{
+
+    display:inline-block;
+    padding: 10px 40px;
+    position: relative;
+    left: 50px;
+    background-color: rgb(14, 16, 44);
+    box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+    font-size:16px;
+    
+    color:#56ebeb;
+    cursor:pointer;
+}
+.nowtime{
+    position:absolute;
+    top:10px;
+    right:10px;
+    border: 1px solid rgb(57, 184, 195);
+    color: rgb(11, 13, 32);
+    border-radius: 4px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.logo{
+    color:rgb(0, 0, 0);
+    margin-left: 670px;
+    position: fixed;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 18px;
+    font-family: 'Graduate', cursive;
+}
+.navbar{
+    position: fixed;
+    display: flex;
+    margin-left: 800px;
+    justify-content: space-around;
+    width: 30%;
+}
+.navbar li{
+    list-style-type:none;
+}
+.navbar li:hover{
+    border-bottom: 1px solid rgb(14, 15, 56);
+}
+.navbar li a{
+    color:rgb(11, 17, 49);
+    text-decoration: none;
+    transition: color 0.5s;
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: bold;   
+}
+.navbar li a:hover{
+    color: rgb(115, 235, 235);
+}
+.burger{
+    display: none;
+    cursor:pointer;
+}
+.burger div{
+    width: 25px;
+    height: 5px;
+    background-color:rgb(226,226,226);
+    margin:5px;
+    transition: all 0.3s ease;
+}
+
+
+@media screen and (max-width:760px){
+    body{
+        overflow-x:hidden;
+    }
+    .navbar{
+        position: fixed;
+        right:0px;
+        height: 90vh;
+        top: 6vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        transform: translate(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .navbar li{
+        opacity:0;
+    }
+    .burger{
+        display: block;
+    }
+}
+.nav-active{
+    transform:translate(0%) ;
+}
+
+
+/*Contact section*/
+#contactus{
+    position: relative;   
+}
+#contactus::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    background: url(../img/contactus.jpg)no-repeat center center/cover;
+}
+#contactbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 34px;
+}
+#contactbox input,
+#contactbox textarea{
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+#contactbox form{
+    width: 40%;
+}
+#contactbox{
+    font-size: 1.3rem;
+}
+.button{
+    text-align: center;
+}
+.button input{
+    width: 10%;
+    padding: 0.5rem;
+    margin-bottom: 5px;
+    border-radius: 9px;
+    font-size: 1.1rem;
+}
+@media screen and (max-width:1024px){
+    #contactbox form{
+        width: 80%;
+    }
+}
+footer{
+    color: rgb(124, 218, 241);
+    padding: 10px;
+    margin: 4px;
+}
+
+.h-primary{
+    font-size: 3.8rem;
+    padding: 12px;
+    font-family: 'Lobster', cursive;
+}
+.h-secondary{
+    font-size: 2.0rem;
+    padding: 12px;
+}
+.center{
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    left: 20px;
+    margin-top: 250px;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgb(9, 9, 36);
+    color: rgb(87, 226, 231);
+    padding: 10px 15px;
+    font-size: 14px;
+    margin-left: 50px;
+    box-shadow: 0px 8px 8px 0px rgb(0, 0, 0);
+    border: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display:inline-block;
+    
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #101341;
+    min-width: 300px;
+    min-height:auto;
+    box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .dropdown-content a {
+    color: rgb(118, 240, 240);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: rgb(136, 223, 226);
+    color: rgb(20, 20, 61);
+}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #84e0f0;
+            color: rgb(14, 14, 53);
+        }
+
+.formbox{
+    width: 100%;
+    
+    font-size: 1.1rem;
+}

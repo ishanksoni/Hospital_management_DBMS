@@ -35,18 +35,13 @@ def all_bill():
 
 @login_required()
 def viewbills(request):
-
     if check_grp(request.user) == True:
-        
         if(request.method == "POST"):
             un = request.POST.get('username')
-            # print(un)print(un)
-            return HttpResponseRedirect('/bills/'+un+'/')
-
+            return HttpResponseRedirect('/bills/'+ str(un) + '/')
         else:
-            list_bills = all_bill()
-            
-            return render(request,'viewbill.html',{'list':list_bills})
+            list_bills = all_bill() 
+            return render(request,'viewbill.html')
     
     else:
         messages.add_message(request, messages.WARNING ,"Accses Denied")
@@ -58,14 +53,22 @@ def bill(request,username):
     user = User.objects.get(username = username)
     patient = User_detail.objects.get(user=user)
     bills = Bills.objects.filter(patient=patient)
+    if(request.method=='POST'):
+        for bill in bills:
+            bill.status = True
+            bill.save()
+        messages.add_message(request, messages.WARNING ,"Bill Paid")
+        return HttpResponseRedirect('/bills/')
     subtotal = 0
-    min_date = datetime
+    flag =0
+    if check_grp(request.user) ==True:
+        flag=1
     for bill in bills:
-        subtotal+=bill.amount
+        if(bill.status==False):
+            subtotal+=bill.amount
         
 
     tax = (4*subtotal)/100
     gt = tax+subtotal
-    return render(request,'bills.html',{'bills':bills , "user": username , "tax":tax , "subt":subtotal ,"gt" :gt})
+    return render(request,'bills.html',{'bills':bills , "user": username , "tax":tax , "subt":subtotal ,"gt" :gt,'flag':flag})
     
-    pass

@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel ="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet"> 
+
+    <nav id = navsticky>
+
+        <div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-content">
+                <a onclick="location.href = '/profile/{{request.user}}';">Profile</a>
+                {% for k,v in menu.items %}
+                    <a onclick="location.href = '{{v}}';">{{k}}</a>
+                {% endfor %} 
+            </div>
+          </div>
+        <div id='alert'>
+                {% if messages %}
+                    {% for message in messages %} 
+                        <script>
+                            document.getElementById('alert').innerHTML='<p class =" alert" >{{message}}</p>'; 
+                            setTimeout(function() {
+                                document.getElementById('alert').innerHTML='';
+                                },3000);
+                        </script>     
+                    {% endfor %}
+                {% endif %}
+            </div>  
+
+            <div class="logo">
+                <h4>HMS</h4>
+            </div>
+            
+            <!-- For navbar-->
+            
+            <ul class="navbar">
+                
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutus/">Services</a></li>
+                           
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            
+            <div class="nowtime">
+                Time now <span id="time"></span>
+            </div>
+        </nav>
+</head>
+<body>
+    
+    <br>
+    <br>
+        {% block con %}
+            
+        {% endblock con %}
+
+        <!--Section for contact us-->
+        <section id="contactus">
+            <h1 style="text-align: center;">Contact Us</h1>
+                <div id="contactbox">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="name"> </label>
+                            <input type="text" name="name" id="name" placeholder="Enter your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"> </label>
+                            <input type="text" name="email" id="email" placeholder="Enter your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobileno"> </label>
+                            <input type="text" name="mobileno" id="mobileno" placeholder="Enter your Mobile no">
+                        </div>
+                        <div class="form-group">
+                            <label for="message"> </label>
+                            <textarea name="message" id="message" cols="30" rows="8" placeholder="Any Message"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="button">  
+                    <input type="submit" />  
+                </div>
+    
+        </section>
+        <script src="{% static 'Footer.js' %}"></script>
+</body>
+
+<script>
+    function togglesidebar(){
+        document.getElementById("sidebar").classList.toggle('active');
+    }
+
+    function displayTime(){
+    let today = new Date();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+   // console.log(time);
+    document.getElementById('time').innerHTML = time;
+    }
+    setInterval(displayTime,  1000);
+    function accessdenied(mesg){
+        document.getElementById('alert').innerHTML='<p style="font-size:20px">mesg</p>'; 
+        setTimeout(function() {
+            document.getElementById('alert').innerHTML='';
+            },3000);
+    }
+</script>
+</html>

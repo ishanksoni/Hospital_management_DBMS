@@ -13,7 +13,7 @@ def menu_processor(request):
     if hasGroup(user, 'Doctors'):
         menu['Appointments'] = '/appointments'
         menu['Reports'] = '/reports'
-        menu['Generate Report'] = '/reports/generate'
+        menu['Generate Report'] = '/reports/new                                                                                                                                                                                                             '
         menu['Logout']  = '/logout'
         
     elif hasGroup(user, 'Patients'):

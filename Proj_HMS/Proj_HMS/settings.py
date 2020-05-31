@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'register',
     'Appointment',
     'Bills',
+    'Reports',
 ]
 
 MIDDLEWARE = [

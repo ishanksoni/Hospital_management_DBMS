@@ -1,0 +1,22 @@
+<html>
+    <title> Bills </title>
+    <h1>
+        Bills
+    </h1>
+    <h2>
+    {% if messages %}
+        {% for message in messages %} 
+            {{message}}
+        {% endfor %}
+    {% endif %}
+</h2>
+    <p> Search by user name </p>
+    <form action="/reports/" method="POST">
+        {% csrf_token %}
+        <input type = "text" name = "username" id = "username" placeholder="*username" />
+    </form>
+    <body>
+
+    </body>
+
+</html>

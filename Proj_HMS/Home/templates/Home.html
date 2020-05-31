@@ -1,71 +1,17 @@
+{% extends 'index.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HMS|HOME PAGE</title>
-    <link rel="stylesheet" href="{% static 'CSS/Sidebarstyle.css' %}">
-</head>
-<body>  
+
+{% block con %}
+<!-- <link rel="stylesheet" href="{% static 'CSS/Sidebarstyle.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  -->
     
-    <div class="nowtime">
-        Time now is <span id="time"></span>
-    </div>
-
-    <div class="container">
-        <h1>Hospital Management System</h1>
-    </div>
-    <div id="sidebar">
-        <div class="toggle-btn" onclick="togglesidebar()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div>
-            <ul>
-                <li onclick="location.href = '/profile/{{request.user}}';">Profile</li>
-                {% for k,v in menu.items %}
-                    <li onclick="location.href = '{{v}}';">{{k}}</li>
-                {% endfor %}            
-            </ul>       
-        </div>
-    </div>
+<title>HMS|HOME PAGE</title>
 
 
-    <script>
-        function togglesidebar(){
-            document.getElementById("sidebar").classList.toggle('active');
-        }
+       
+{% endblock con %}
 
-        function displayTime(){
-        let today = new Date();
-        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-       // console.log(time);
-        document.getElementById('time').innerHTML = time;
-        }
-        setInterval(displayTime,  1000);
-        function accessdenied(mesg){
-            document.getElementById('alert').innerHTML='<p style="font-size:20px">mesg</p>'; 
-            setTimeout(function() {
-                document.getElementById('alert').innerHTML='';
-                },3000);
-        }
-    </script>
-</body>
-<footer>
-    <div id='alert' style="margin-left: 500px;">
-        {% if messages %}
-            {% for message in messages %} 
-                <script>
-                    document.getElementById('alert').innerHTML='<p class =" msg">{{message}}</p>'; 
-                    setTimeout(function() {
-                        document.getElementById('alert').innerHTML='';
-                        },3000);
-                </script>     
-            {% endfor %}
-        {% endif %}
-    </div>
-</footer>
-</html>
+
