@@ -7,9 +7,13 @@ from django.template.context_processors import csrf
 from django.contrib import messages
 from .models import *
 from django.contrib.auth.decorators import login_required
+from Home.context import Context
+
+
 
 @login_required(login_url = '/login/')
 def profile(request,username):
+    context = Context(request)
     menu = {}
     user = User.objects.get(username = username)
     menu['First Name'] = user.first_name
@@ -39,14 +43,17 @@ def profile(request,username):
         pass
          
     if(request.user.username == username):
-        print(menu)
-        return render(request,'profile.html',{'menu':menu})
+        # print(menu)
+       
+        context['menu'] = menu
+        return render(request,'profile.html',context)
 
     try:
         doctor = Doctor_details.objects.get(user = request.user)
-
-        print(menu)
-        return render(request,'profile.html',{'menu':menu})
+        # print(menu)
+        
+        context['menu'] = menu
+        return render(request,'profile.html',context)
     except:
         messages.add_message(request, messages.WARNING ,"Accses Denied")
         return HttpResponseRedirect('/')

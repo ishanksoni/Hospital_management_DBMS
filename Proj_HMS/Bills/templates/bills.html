@@ -208,8 +208,16 @@
         <form method="POST" action="/bills/{{user}}/">
             {% csrf_token %}
             <button type="submit" class="btn">Pay Bills</button>
+            <br>
+            <br>            
         </form>
 
+    {% else %}
+    <div>
+        <button id="submit" class="btn" onclick="window.print();">Print</button>
+    </div>
     {% endif %}
+
+
 </body>
 </html> 

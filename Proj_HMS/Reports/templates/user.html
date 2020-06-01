@@ -1,22 +1,23 @@
-<html>
-    <title> Bills </title>
-    <h1>
-        Bills
+{% extends 'index.html' %}
+
+
+
+{% block con %}
+
+    
+    <title> Reports</title>
+    <h1 style="text-align: center;">
+        Reports
     </h1>
-    <h2>
-    {% if messages %}
-        {% for message in messages %} 
-            {{message}}
-        {% endfor %}
-    {% endif %}
-</h2>
-    <p> Search by user name </p>
-    <form action="/reports/" method="POST">
+    <br>
+    <br>
+    <br>
+    <h3 style="text-align: center;"> Search by user name </h3>
+    <form style="text-align: center;" action="/reports/" method="POST">
         {% csrf_token %}
-        <input type = "text" name = "username" id = "username" placeholder="*username" />
+        <input style="width: 400px; height: 40px;" type = "text" name = "username" id = "username" placeholder="*username" />
+        <input class="btn" type="submit" >
     </form>
-    <body>
-
-    </body>
-
-</html>
+    
+        
+{% endblock con %}

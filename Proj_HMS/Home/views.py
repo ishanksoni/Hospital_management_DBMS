@@ -8,7 +8,5 @@ from . import options
 @login_required(login_url = '/login/')
 
 def home(request):    
-    menu = options.menu_processor(request)
-
-    messages.add_message(request, messages.INFO, 'Welcome to The Hospital Portal.')
-    return render(request,'Home.html',{'menu':menu})
+    actions = options.action(request)
+    return render(request,'Home.html',{'actions':actions})

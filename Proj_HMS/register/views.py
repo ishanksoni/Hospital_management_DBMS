@@ -8,6 +8,7 @@ from django.contrib import messages
 from Profile.models import User_detail
 from django.contrib.auth.decorators import login_required
 from Appointment.views import *
+from Home.context import Context
 
 def check_grp(user):
     try:
@@ -19,6 +20,9 @@ def check_grp(user):
 
 @login_required(login_url = '/login/')
 def register(request):
+
+    context = Context(request)
+
     if check_grp(request.user) == True:
         if(request.method=='POST'):
             fn = request.POST.get('firstname')
@@ -53,7 +57,7 @@ def register(request):
             messages.add_message(request, messages.WARNING , 'Successfully Registered' + un)
             return HttpResponseRedirect(request,'appontments/book')
         else:   
-            return render(request,'register.html')
+            return render(request,'register.html',context)
     else:
         messages.add_message(request, messages.WARNING ,"Hold right there !!Accses Denied")
         return HttpResponseRedirect('/')

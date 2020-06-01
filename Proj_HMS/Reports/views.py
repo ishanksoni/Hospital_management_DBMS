@@ -9,34 +9,42 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from Bills.views import check_grp
 from datetime import datetime
+from Home.context import Context
+
+
 now_t = datetime.now()
 @login_required()
 def viewreports(request):
+    context = Context(request)
     if Doctor_details.objects.filter(user =request.user).exists():
         if(request.method == "POST"):
             un = request.POST.get('username')
             
             return HttpResponseRedirect('/reports/'+ str(un) + '/')
         else:
-            return render(request,'user.html')
+            return render(request,'user.html',context)
     else:
         messages.add_message(request, messages.WARNING ,"Accses Denied")
         return HttpResponseRedirect('/')
 @login_required()
 def report(request,username):
+    context = Context(request)
     user = User.objects.get(username=username)
     patient = User_detail.objects.get(user=user)
 
     if(Report.objects.filter(patient=patient).exists()):
         all_report = Report.objects.filter(patient=patient)
-        return render(request,'Viewreport.html',{'reports':all_report})
+        context =Context(request)
+        context['reports'] = all_report
+        return render(request,'Viewreport.html',context)
         
     else:   
         messages.add_message(request, messages.WARNING ,"No report Found")
-        return HttpResponseRedirect('/reports/')
+        return HttpResponseRedirect('/')
 
 @login_required()
 def gen_report(request):
+    context = Context(request)
     if(request.method =="POST"):
         user = request.user
         try:
@@ -59,7 +67,7 @@ def gen_report(request):
 
         return HttpResponseRedirect('/')
     else:
-        return render(request,'report.html')
+        return render(request,'report.html',context)
 
 
 

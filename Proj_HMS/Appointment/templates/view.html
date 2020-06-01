@@ -1,26 +1,20 @@
+{% extends 'index.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Appointments</title>
-</head>
+
+{% block con %}
+    
+
 <style>
-    body {
-        font-family: sans-serif;
-        background: rgba(108, 142, 169, 1);
-        background: linear-gradient(to right, rgba(70, 115, 225, 0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
-    }
 
-    .container {
+     .container {
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 5px;
         padding-right: 5px;
+        margin-top: 100px;
     }
 
     h2 {
@@ -73,37 +67,11 @@
         margin-left: 350px;
         margin-bottom: 20px;
     }
-
-    .container button {
-        position: relative;
-        background: rgb(4, 28, 56);
-        border: 1px solid black;
-        border-radius: 5px;
-        cursor: pointer;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-        align-items: center;
-    }
-
-    .container button:hover {
-        transform: scale(1.04);
-    }
-
-    .btn {
-        margin: 5px;
-        padding: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        color: rgb(102, 205, 236);
-        transition: all 300ms linear;
-    }
-
-    .btn:hover {
-        color: white;
-    }
+    
 </style>
 
-<body>
+    <title>Appointments</title>
+
     <div class="container1">
         <h1>
             Appointments
@@ -113,7 +81,6 @@
             <input type="text" id="firstname" value= "Dr {{request.user.first_name}} " readonly>
         </div>
     </div>
-
     <div class="container">
         <button id="btn-Upcoming" class="btn" onclick="Upcoming()">Upcoming List</button>
         <button id="btn-Previous" class="btn" onclick="Previous()">Previous List</button>
@@ -177,5 +144,6 @@
             document.getElementById('Previous').style.display = '';
         };
     </script>
-</body>
-</html>
+
+{% endblock con %}
+    

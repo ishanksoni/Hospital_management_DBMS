@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from Appointment.views import *
 from .models import Bills
 
+
 def check_grp(user):
     try:
         group = Group.objects.get(name = "Receptionist")
@@ -35,13 +36,14 @@ def all_bill():
 
 @login_required()
 def viewbills(request):
+    context = Context(request)
     if check_grp(request.user) == True:
         if(request.method == "POST"):
             un = request.POST.get('username')
             return HttpResponseRedirect('/bills/'+ str(un) + '/')
         else:
             list_bills = all_bill() 
-            return render(request,'viewbill.html')
+            return render(request,'viewbill.html',context)
     
     else:
         messages.add_message(request, messages.WARNING ,"Accses Denied")
@@ -70,5 +72,6 @@ def bill(request,username):
 
     tax = (4*subtotal)/100
     gt = tax+subtotal
+    
     return render(request,'bills.html',{'bills':bills , "user": username , "tax":tax , "subt":subtotal ,"gt" :gt,'flag':flag})
     

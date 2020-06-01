@@ -12,9 +12,9 @@ from .forms import AppointmentForm
 from . models import Appointments
 from Bills.models import Bills
 import datetime
-
-
+from Home.context import Context
 now_t = datetime.datetime.now()
+
 
 
 def check_grp(user):
@@ -27,6 +27,7 @@ def check_grp(user):
 
 @login_required()
 def book_appointment(request):
+    context = Context(request)
     if check_grp(request.user) == True:
         if(request.method=='POST'):
             form = AppointmentForm(request.POST)
@@ -62,13 +63,16 @@ def book_appointment(request):
                 return HttpResponseRedirect('/appointments/book/')
         else:
             form = AppointmentForm()
-            return render(request,'appointment.html',{'form':form})
+            
+            context['form'] = form
+            return render(request,'appointment.html',context)
     else:
         messages.add_message(request, messages.WARNING ,"Accses Denied")
         return HttpResponseRedirect('/')
 
 
 def view_appointments(request):
+    context = Context(request)
     try:
         doctor = Doctor_details.objects.get(user =request.user)
 
@@ -100,7 +104,8 @@ def view_appointments(request):
 
     # print(up_list ," up  coming list is -----1-1-1-")
     # print(past_list)
-
-
-    return render(request,'view.html',{'up':up_list , 'pre': past_list , 'now_t':now_t})  
+    context['up'] = up_list
+    context['pre'] = past_list
+    context['now_t'] = now_t
+    return render(request,'view.html',context)  
   

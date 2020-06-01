@@ -1,69 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'index.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile|{{request.user}}</title>
-</head>
-<style>
-    body {
-        font-family: sans-serif;
-        background: rgba(108, 142, 169, 1);
-        background: linear-gradient(to right, rgba(70, 115, 225, 0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
-    }
 
-    .general-form {
-        width: 500px;
-        margin: 30px auto;
-        margin-top: 35px;
-        background:linear-gradient(to right, #7f9ec7 0%, #b0f1eec5 0%, #ffffff 99%);
-        border-radius: 10px;
-        font-family: Tahoma, sans-serif;
-        border: 2px solid rgb(28, 28, 71);
-        padding: 35px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        transition: all 500ms linear;
-    }
+{% block con %}
 
-    .general-form:hover {
-        transform: scale(1.04);
-    }
-
-    .general-form h1 {
-        text-align: center;
-        color: rgb(28, 28, 71);
-    }
-
-    .general-form form div input[type="date"],
-    .general-form form div input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #dddddd;
-        margin-bottom: 15px;
-        box-sizing: border-box;
-    }
-
-    .grid-cont {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .row {
-        margin: 3px;
-        padding: 3px;
-        margin-bottom: auto;
-    }
-
-    .info {
-        margin: 3px;
-        padding: 3px;
-        margin-top: auto;
-    }
-</style>
-
-<body>
-    <div class="container">
+    <div>
         <div class="form-group general-form">
             <h1>Profile</h1>
             <form action="POST" action="/profile/">
@@ -85,6 +25,5 @@
             </form>
         </div>
     </div>
-</body>
 
-</html>
+    {% endblock con %}

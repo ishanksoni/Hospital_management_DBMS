@@ -1,127 +1,15 @@
-<!DOCTYPE html>
-<html> 
-  <head>
-    <meta charset="utf-8">
+{% extends 'index.html' %}
+
+
+{% block con %}
+  
+
+  
+    
     <title>Register Patient</title>
 
-  </head>
-  <style>
 
-
-    body {
-      background: rgba(108,142,169,1);
-      background: linear-gradient(to right, rgba(70,115,225,0.9529331752232143) 0%, rgb(46, 109, 119) 0%, rgb(126, 163, 194) 80%);
-    }
-
-    .msg {
-		margin-left: 10px;
-		display:inline-block;
-		padding:10px 100px;
-		background-color: rgb(4, 28, 56);
-		font-size:17px;
-		border:none;
-		border-radius:5px;
-		color:#c2edfd;
-		cursor:pointer;
-
-
-		}
-
-    .signup-form {
-      font-family: "Roboto", sans-serif;
-      width:600px;
-      margin:30px auto;
-      background:linear-gradient(to right, #7f9ec7 0%, #b0f1eec5 0%, #ffffff 99%);
-      border-radius: 10px;
-      border: 2px solid rgb(28, 28, 71);
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      transition: all 500ms linear;
-    }
-    .signup-form:hover {
-        transform: scale(1.04);
-    }
-
-    .form-header h1 {
-      font-size: 30px;
-      text-align:center;
-      color:rgb(4, 28, 56);
-      padding:10px 0px ;
-    }
-
-    .form-body {
-      padding:10px 40px;
-      color:rgb(68, 62, 62);
-    }
-
-    .form-group{
-      margin-bottom:20px;
-    }
-
-    .form-body .form-input[type="password"],
-      .form-body .form-input[type="text"] {
-        width: 100%;
-        padding: 15px;
-        border: 1.5px solid #dddddd;
-        margin-bottom: 15px;
-        box-sizing:border-box;
-    }
-    .horizontal-group .left{
-      float:left;
-      width:50%;
-    }
-    .horizontal-group .right{
-      float:right;
-      width:50%;
-    }
-
-    ::-webkit-input-placeholder  {
-      color:rgb(4, 28, 56);
-      
-    }
-
-    .signup-form .form-footer  {
-    background-color:rgba(66, 122, 148, 0.383);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding:10px 40px;
-    text-align: right;
-    border-top: 3px solid #1abeb1;
-   
-    }
-
-    .form-footer span {
-    float:left;
-    margin-top: 10px;
-    color:rgb(0, 0, 0);  
-    font-style: italic;
-    font-weight: thin;
-    }
-
-    .btn {
-    display:inline-block;
-    padding:10px 20px;
-    background-color: rgb(4, 28, 56);
-    font-size:17px;
-    border:none;
-    border-radius:5px;
-    color:#c2edfd;
-    cursor:pointer;
-    }
-
-    .btn:hover {
-    background-color: rgba(196, 234, 251, 0.876);;
-    color:rgb(4, 28, 56);
-    }
-
-  </style>
-  <body>
-    {% if messages %}
-			{% for message in messages %} 
-				<div class = "msg">
-					{{message}}
-				</div>
-            {% endfor %}
-        {% endif %}
+    
     <form class="signup-form" action="/register/" method="POST">
       {% csrf_token %}
 
@@ -207,5 +95,4 @@
         <button type="submit" class="btn">Register</button>
       </div>
     </form>
-  </body>
-</html>
+    {% endblock con %}
