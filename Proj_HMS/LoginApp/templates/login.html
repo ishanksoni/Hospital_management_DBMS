@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
+{% load static %}
 		<title>Login|Hospital</title>
-	</head>
+	
 	<style>
 		body {
-		background: rgba(108,142,169,1);
-
-		background:linear-gradient( to right,rgba(70,115,225,0.9529331752232143) 0%, rgb(28, 95, 104)0%, rgb(138, 173, 200) 80%);
+		background: linear-gradient(to right, rgba(155, 250, 245, 0.953) 0%, rgb(119, 202, 224), rgb(66, 137, 143) 80%);
 		}
+
 		.msg {
 		margin-left: 10px;
 		display:inline-block;
@@ -25,18 +21,26 @@
 		}
 
 		.login-form {
-		font-family: "Roboto", sans-serif;
-		width:650px;
-		margin:30px auto;
-		background:linear-gradient(to right, #a5ccff 0%, #f3f5fbc5 10%, #ffffff 99%);
-		border-radius: 10px;
+			width: 320px;
+			margin-top:150px;
+			margin-left: 800px;
+			background:linear-gradient(to right, #7f9ec7 0%, #b0f1eec5 0%, #ffffff 99%);
+			font-family: Tahoma, sans-serif;
+			border: 1px solid rgb(28, 28, 71);
+			
+			padding: 35px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			transition: all 500ms linear;
+		}
+		.login-form:hover {
+    		transform: scale(1.04);
 		}
 
 		.form-header  {
-		background-color: rgba(66, 122, 148, 0.383);
+		
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
-		border-bottom: 3px solid #1abeb1;
+		
 		}
 
 		.form-header h1 {
@@ -75,12 +79,12 @@
 		}
 
 		.login-form .form-footer  {
-		background-color: rgba(255, 255, 255, 0.595);;
+		
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
 		padding:10px 40px;
 		text-align: right;
-		border-top: 3px solid #1abeb1;
+		
 		clear:both;
 		}
 
@@ -99,6 +103,17 @@
 		color:rgb(4, 28, 56);
 		}
 	</style>
+	<div>
+		<img src="{% static 'logo.png' %}" alt="logo" style="
+		position: fixed;
+		margin-left: 200px;
+		margin-top: 0;
+		width: 500px;
+		height: 400px;
+		">
+		</a>
+		
+	</div>
 	<body>
 		{% if messages %}
 			{% for message in messages %} 
@@ -110,7 +125,6 @@
         {% endif %}
 		<form class="login-form" action="/login/" method="POST">
 			{% csrf_token %}
-
 			<!-- form header -->
 			<div class="form-header">
 				<h1>Login</h1>
@@ -118,16 +132,16 @@
 
 			<!-- form body -->
 			<div class="form-body">	
-				<input type="text" name="username" id="username" class="form-input" placeholder="Username" required="required">
-				<input type="password" name="password" id="password" class="form-input" placeholder="enter your password" required="required">
+				<input type="text" name="username" id="username" class="form-input" placeholder="*username" required="required">
+				<input type="password" name="password" id="password" class="form-input" placeholder="*enter your password" required="required">
 			</div>
 
 			<div class="form-footer">
-				<button type="submit" class="btn">Register</button>
+				<button type="submit" class="btn">Get In</button>
 			</div>
 
 		</form>
 
 
 	</body>
-</html>
+

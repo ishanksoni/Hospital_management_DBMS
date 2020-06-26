@@ -13,11 +13,8 @@ class Doctor_details(models.Model):
 
     def __str__(self):
         return self.user.username
-    
 
-
-
-
+        
 class User_detail(models.Model):
 
     user = models.OneToOneField(User,on_delete= models.CASCADE)      

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from .login_crediantial import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ldw%ztn#-mecmaenqx3w)mt#knf7-b(m=o@2l%vmlm^0m=_=8a'
+SECRET_KEY = os.environ.get('SECRITY_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myHospital',
-		'USER': 'root',
-		'PASSWORD': '',
+		'USER': db_user,
+		'PASSWORD': db_pass,
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

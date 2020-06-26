@@ -9,6 +9,8 @@ from Profile.models import User_detail
 from django.contrib.auth.decorators import login_required
 from Appointment.views import *
 from Home.context import Context
+import random
+from .regiterconformation_mail import *
 
 def check_grp(user):
     try:
@@ -22,25 +24,24 @@ def check_grp(user):
 def register(request):
 
     context = Context(request)
-
     if check_grp(request.user) == True:
         if(request.method=='POST'):
             fn = request.POST.get('firstname')
             ln = request.POST.get('lastname')
-            email = request.POST.get('eamil')
+            email = request.POST.get('email')
             cn = request.POST.get('contact')
-            un = request.POST.get('username')
-            p1 = request.POST.get('password')
-            p2 = request.POST.get('confirm-password')
+            un = fn + str(random.randrange(10,99))
             gen = request.POST.get('gender')
             dob = request.POST.get('dob')
+            p1 = str(dob)
+            p2 = str(dob)
             bldg = request.POST.get('bldg')
             adres = request.POST.get('address')
             if( User.objects.filter(username = un).exists()):
                 messages.add_message(request, messages.WARNING ,"username already exists")
                 return HttpResponseRedirect('/register/')
             if(p1!=p2):
-                messages.add_message(request, messages.WARNING ,"password didnot matched")
+                messages.add_message(request, messages.WARNING ,"password did not matched")
                 return HttpResponseRedirect('/register/')
 
             new_user = User.objects.create_user(username=un,email=email,password=p1,first_name = fn , last_name = ln)
@@ -51,11 +52,14 @@ def register(request):
             details.save()
             group = Group.objects.get(name= 'Patients')
             new_user.groups.add(group)
-            
+
+            send(un,email,str(dob))
                 # messages.add_message(request, messages.WARNING ,"Error occured in database")
                 # return HttpResponseRedirect('/register/')
             messages.add_message(request, messages.WARNING , 'Successfully Registered' + un)
-            return HttpResponseRedirect(request,'appontments/book')
+
+
+            return HttpResponseRedirect('/appointments/book')
         else:   
             return render(request,'register.html',context)
     else:

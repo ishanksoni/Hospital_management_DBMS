@@ -12,7 +12,7 @@
     <nav id = navsticky>
 
         <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
+            <button class="dropbtn">Actions</button>
             <div class="dropdown-content">
                 <a onclick="location.href = '/profile/{{request.user}}';">Profile</a>
                 {% for k,v in actions.items %}
@@ -32,16 +32,31 @@
                         </script>     
                     {% endfor %}
                 {% endif %}
-            </div>  
-
-            <div class="logo">
-                <h4>HMS</h4>
+            </div> 
+            <a href="/">
+            <div>
+                <img src="{% static 'logo.png' %}" alt="logo" style="
+                position: relative;
+                margin-left: 150px;
+                margin-top: 0;
+                width: 200px;
+                height: 180px;
+                ">
+                </a>
+                
             </div>
+            <a href="/">
+         <div class="logo">
+               <h4>Vaishnav Hospitals</h4>
+            </div> 
+            </a>
+        
             
             <!-- For navbar-->
             
             <ul class="navbar">
                 
+               
                 <li><a href="/">Home</a></li>
                 <li><a href="/aboutus/">About US</a></li>
                            
@@ -58,13 +73,41 @@
         </nav>
 </head>
 <body>
-        {% block con %}
-            
-        {% endblock con %}
+   <style>
+            img{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 800px;
+        height: 800px;
+        margin-left: 100px;
+        z-index: -1;
+        }
+   </style>
+        <img src="{% static 'background.jpg' %}" alt="background" 
+        style="
+        position: absolute;
+        z-index: -20; 
+        width:1300px;
+        height: 800px; 
+        margin-left: 80px; 
+        margin-bottom: 10px;
+        margin-top: 80px;
+        box-shadow: 10px 10px 10px 10px rgba(3, 0, 0, 0.2), 10px 10px 10px 10px rgba(0, 0, 0, 0.19);
+        ">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
-        <!--Section for contact us-->
-       
-        <script src="{% static 'Footer.js' %}"></script>
+        {% block con %}
+
+        {% endblock con %}
+        <footer>
+            <p style=" color: black; text-align: center; position: relative;"> © Vaishnav Hospitals 2020</p>
+        </footer>
 </body>
 
 <script>

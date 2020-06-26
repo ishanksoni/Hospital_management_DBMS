@@ -8,13 +8,9 @@
     
     <title>Register Patient</title>
 
-
-    
     <form class="signup-form" action="/register/" method="POST">
       {% csrf_token %}
-
       
-
       <div class="form-header">
         <h1>Register Account</h1>
       </div>
@@ -31,7 +27,7 @@
         </div>
 
         <div class="form-group">
-          <input type="text" name="email" id="email" class="form-input" placeholder="* Email" required="required">
+          <input type="email" name="email" id="email" class="form-input" placeholder="* Email" required="required">
         </div>
 
         <div class="horizontal-group">
@@ -39,24 +35,13 @@
           
             <input type="text" name="contact" id="contact" class="form-input" placeholder="*Phone N0." required="required">
           </div>
-          <div class="form-group left">
-            
-            <input type="text" name="username" id="username" class="form-input" placeholder="* Username" required="required">
-          </div>
+          
         </div>
 
       
 
         <!-- Passwrod and confirm password -->
-        <div class="horizontal-group">
-          <div class="form-group left">
-           
-            <input type="password" name="password" id="password" class="form-input" placeholder="enter your password" required="required">
-          </div>
-          <div class="form-group right">
-            <input type="password" class="form-input" name="confirm-password" id="confirm-password" placeholder="enter your password again" required="required">
-          </div>
-        </div>
+     
 
         
         <div class="horizontal-group">

@@ -14,16 +14,33 @@ nav{
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
-    min-height: 70px;
+    min-height: 70px;   
     max-height:70px ;
-    background:linear-gradient(to right, rgba(24, 21, 155, 0.953) 0%, rgb(34, 83, 197) 0%, rgb(25, 120, 172) 50%);
+    /* background:linear-gradient(to right, rgba(24, 21, 155, 0.953) 0%, rgb(34, 83, 197) 0%, rgb(25, 120, 172) 50%); */
     position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     top: 5px;
     z-index: 500;
 }
-.alert{
+/* footer {
+    position: sticky;
+    
+    height: 100px;
+    width: 100%;
+    background-color: #333333;
+}
 
+p.copyright {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    line-height: 40px;
+    font-size: 0.7em;
+    text-align: center;
+    bottom:0;
+} */
+
+.alert{
     display:inline-block;
     padding: 10px 40px;
     position: relative;
@@ -31,12 +48,11 @@ nav{
     background-color: rgb(17, 20, 71);
     box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
     font-size:16px;
-    
     color:#56ebeb;
     cursor:pointer;
 }
 .nowtime{
-    position:absolute;
+    position:fixed;
     top:10px;
     right:10px;
     border: 1px solid rgb(57, 184, 195);
@@ -47,9 +63,10 @@ nav{
 }
 
 .logo{
-    color:rgb(0, 0, 0);
-    margin-left: 670px;
-    position: fixed;
+
+    margin-left: 110px;
+    color: black;
+    position: relative;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 18px;
@@ -63,6 +80,7 @@ nav{
     width: 30%;
 }
 .navbar li{
+    position: relative;
     list-style-type:none;
 }
 .navbar li:hover{
@@ -168,7 +186,7 @@ nav{
     }
 }
 footer{
-    color: rgb(124, 218, 241);
+    color: rgb(0, 0, 0);
     padding: 10px;
     margin: 4px;
 }
@@ -325,7 +343,7 @@ footer{
     margin:30px auto;
     background:linear-gradient(to right, #7f9ec7 0%, #b0f1eec5 0%, #ffffff 99%);
     border-radius: 10px;
-    border: 2px solid rgb(28, 28, 71);
+    border: 1px solid rgb(28, 28, 71);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: all 500ms linear;
   }
@@ -440,3 +458,5 @@ footer{
 .col-4 {
     flex-basis: 25%;
 }
+
+
