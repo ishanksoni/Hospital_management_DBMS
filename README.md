@@ -19,8 +19,8 @@ $ pip install -r requirements.txt
 ```
 ## Setup Following environmental variable 
 ```
-DB_USER="root"
-DB_PASS=""
+DB_USER="<db_user>"
+DB_PASS="<db_pass>"
 EMAIL="<company_mail_address>"
 EMAIL_PASS="<mail_password>"
 ```
