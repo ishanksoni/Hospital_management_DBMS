@@ -2,7 +2,7 @@ appdirs==1.4.3
 asn1crypto==0.24.0
 configparser==4.0.2
 contextlib2==0.6.0.post1
-cryptography==2.1.4
+cryptography==2.3
 Django==3.0.7
 django-admin==2.0.1
 distlib==0.3.0
